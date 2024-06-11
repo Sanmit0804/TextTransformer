@@ -2,19 +2,22 @@ import React, { useState } from "react";
 
 export default function Textform(props) {
   const handleUpClick = () => {
-    console.log("UpperCase was clicked");
     setText(text.toUpperCase());
   };
   const handleLowClick = () => {
-    console.log("Lowercase was clicked");
     setText(text.toLowerCase());
   };
-  const handleResetClick = () => {
-    console.log("Lowercase was clicked");
+  const handleClearText = () => {
     setText("");
   };
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Text Copied..!")
+      }).catch((err) => {
+        console.error('Failed to copy text: ', err);
+      });
+  };
   const handleOnChange = (event) => {
-    console.log("On change");
     setText(event.target.value);
   };
   const [text, setText] = useState("");
@@ -34,9 +37,14 @@ export default function Textform(props) {
             onChange={handleOnChange}
           ></textarea>
         </div>
-        <button className="m-2" onClick={handleUpClick}>Conver to UpperCase</button>
-        <button className="m-2" onClick={handleLowClick}>Conver to LowerCase</button>
-        <button className="m-2" onClick={handleResetClick}>Reset</button>
+        <button className="mx-1 my-1" onClick={handleUpClick}>Convert to UpperCase</button>
+        <button className="mx-1 my-1" onClick={handleLowClick}>Convert to LowerCase</button>
+        <button className="mx-1 my-1" onClick={handleCopy}>Copy to ClipBoard</button>
+        <button className="mx-1 my-1" onClick={handleClearText}>Clear Text</button>
+      </div>
+      <div className="container">
+        <h3 className="my-3">Your Text Summary</h3>
+        <p>{text.split(' ').length} Words and {text.length} Characters</p>
       </div>
     </>
   );
