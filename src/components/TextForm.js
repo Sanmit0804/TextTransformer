@@ -11,15 +11,25 @@ export default function Textform(props) {
     setText("");
   };
   const handleCopy = () => {
-    navigator.clipboard.writeText(text).then(() => {
-        alert("Text Copied..!")
-      }).catch((err) => {
-        console.error('Failed to copy text: ', err);
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("Text Copied..!");
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
       });
   };
+
+  const handleRemoveExtraSpace = (event) => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
+
   const [text, setText] = useState("");
   return (
     <>
@@ -37,14 +47,27 @@ export default function Textform(props) {
             onChange={handleOnChange}
           ></textarea>
         </div>
-        <button className="mx-1 my-1" onClick={handleUpClick}>Convert to UpperCase</button>
-        <button className="mx-1 my-1" onClick={handleLowClick}>Convert to LowerCase</button>
-        <button className="mx-1 my-1" onClick={handleCopy}>Copy to ClipBoard</button>
-        <button className="mx-1 my-1" onClick={handleClearText}>Clear Text</button>
+        <button className="mx-1 my-1" onClick={handleUpClick}>
+          Convert to UpperCase
+        </button>
+        <button className="mx-1 my-1" onClick={handleLowClick}>
+          Convert to LowerCase
+        </button>
+        <button className="mx-1 my-1" onClick={handleCopy}>
+          Copy to ClipBoard
+        </button>
+        <button className="mx-1 my-1" onClick={handleClearText}>
+          Clear Text
+        </button>
+        <button className="mx-1 my-1" onClick={handleRemoveExtraSpace}>
+          Remove Extra Spaces
+        </button>
       </div>
       <div className="container">
         <h3 className="my-3">Your Text Summary</h3>
-        <p>{text.split(' ').length} Words and {text.length} Characters</p>
+        <p>
+          {text.split(" ").length} Words and {text.length} Characters
+        </p>
       </div>
     </>
   );
