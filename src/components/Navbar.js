@@ -27,11 +27,6 @@ export default function Navbar(props) {
                   {props.name}
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="https://github.com/Sanmit0804" target="_blank">
-                  Link
-                </a>
-              </li>
             </ul>
             <form className="d-flex" role="search">
               <input
