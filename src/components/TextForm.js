@@ -33,7 +33,7 @@ export default function Textform(props) {
   const [text, setText] = useState("");
   return (
     <>
-      <div className="container">
+      <div className={`container text-${props.mode=== 'light'?'dark': 'light'}`}>
         <div className="mb-3 mt-3">
           <label htmlFor="exampleFormControlTextarea1" className="form-label">
             Enter the Text
@@ -62,12 +62,12 @@ export default function Textform(props) {
         <button className="mx-1 my-1" onClick={handleRemoveExtraSpace}>
           Remove Extra Spaces
         </button>
-      </div>
-      <div className="container">
-        <h3 className="my-3">Your Text Summary</h3>
-        <p>
-          {text.split(" ").length} Words and {text.length} Characters
-        </p>
+        <div className="container">
+          <h3 className="my-3">Your Text Summary</h3>
+          <p>
+            {text.split(" ").length} Words and {text.length} Characters
+          </p>
+        </div>
       </div>
     </>
   );
