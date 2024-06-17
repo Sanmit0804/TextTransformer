@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Textform from "./components/TextForm";
+import Alert from "./components/Alert";
 // import About from "./components/About";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         mode={mode}
         toggleMode={toggleMode}
       ></Navbar>
+      <Alert />
       <Textform mode={mode}> </Textform>
       {/* <About></About> */}
     </>

@@ -33,7 +33,11 @@ export default function Textform(props) {
   const [text, setText] = useState("");
   return (
     <>
-      <div className={`container text-${props.mode=== 'light'?'dark': 'light'}`}>
+      <div
+        className={`container text-${
+          props.mode === "light" ? "dark" : "light"
+        }`}
+      >
         <div className="mb-3 mt-3">
           <label htmlFor="exampleFormControlTextarea1" className="form-label">
             Enter the Text
@@ -65,7 +69,9 @@ export default function Textform(props) {
         <div className="container">
           <h3 className="my-3">Your Text Summary</h3>
           <p>
-            {text.split(".").length-1} Sentence, {text.split(" ").length===1 ? 0:text.split(" ").length} Words and {text.length} Characters
+            {text.split(".").length - 1} Sentence,{" "}
+            {text.split(" ").length === 1 ? 0 : text.split(" ").length} Words
+            and {text.length} Characters
           </p>
         </div>
       </div>
