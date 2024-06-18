@@ -7,14 +7,19 @@ import Alert from "./components/Alert";
 
 function App() {
   const [mode, setMode] = useState("light"); // Weather dark mode is enabled or not
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = () => {
+    setAlert("This is alert")
+  };
 
   const toggleMode = () => {
     if (mode === "light") {
-      setMode('dark');
-      document.body.style.backgroundColor = '#121212';
+      setMode("dark");
+      document.body.style.backgroundColor = "#121212";
     } else {
-      setMode('light')
-      document.body.style.backgroundColor = 'white';
+      setMode("light");
+      document.body.style.backgroundColor = "white";
     }
   };
 
@@ -26,7 +31,7 @@ function App() {
         mode={mode}
         toggleMode={toggleMode}
       ></Navbar>
-      <Alert />
+      <Alert alert={alert} />
       <Textform mode={mode}> </Textform>
       {/* <About></About> */}
     </>

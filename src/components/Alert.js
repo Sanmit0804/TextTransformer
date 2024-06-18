@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Alert(props) {
   return (
     <div className="container mt-3">
       <div className="alert alert-success" role="alert">
-        {props.value}
+        {props.alert}
       </div>
     </div>
   );
