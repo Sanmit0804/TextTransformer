@@ -3,27 +3,33 @@ import React, { useState } from "react";
 export default function Textform(props) {
   const handleUpClick = () => {
     setText(text.toUpperCase());
+    props.showAlert("Text has been UpperCased..!!","success")
   };
   const handleLowClick = () => {
     setText(text.toLowerCase());
+    props.showAlert("Text has been LowerCased..!!","success")
   };
   const handleClearText = () => {
     setText("");
+    props.showAlert("Text Cleared","danger")
+
   };
   const handleCopy = () => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert("Text Copied..!");
+        props.showAlert("Text Copied","info")
       })
       .catch((err) => {
         console.error("Failed to copy text: ", err);
       });
+
   };
 
   const handleRemoveExtraSpace = (event) => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra Space Removed..✅","info")
   };
 
   const handleOnChange = (event) => {

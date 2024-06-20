@@ -1,11 +1,16 @@
 import React from "react";
 
-export default function Alert(props) {
+function Alert(props) {
+
   return (
-    <div className="container mt-3">
-      <div className="alert alert-success" role="alert">
-        {props.alert}
+    props.alert && (
+      <div className="container mt-3">
+        <div className={`alert alert-${props.alert.type}`} role="alert">
+          {props.alert.msg}
+        </div>
       </div>
-    </div>
+    )
   );
 }
+
+export default Alert;

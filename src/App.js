@@ -9,17 +9,26 @@ function App() {
   const [mode, setMode] = useState("light"); // Weather dark mode is enabled or not
   const [alert, setAlert] = useState(null);
 
-  const showAlert = () => {
-    setAlert("This is alert")
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
+
+    setTimeout(() => {
+      showAlert(null);
+    }, 3000);
   };
 
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#121212";
+      showAlert("Dark mode enabled", "success");
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
+      showAlert("Light mode enabled", "warning");
     }
   };
 
@@ -32,7 +41,9 @@ function App() {
         toggleMode={toggleMode}
       ></Navbar>
       <Alert alert={alert} />
-      <Textform mode={mode}> </Textform>
+      <Textform mode={mode} showAlert={showAlert}>
+        {" "}
+      </Textform>
       {/* <About></About> */}
     </>
   );
