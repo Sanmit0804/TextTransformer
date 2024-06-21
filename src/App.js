@@ -25,10 +25,12 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "#121212";
       showAlert("Dark mode enabled", "success");
+      document.title = "TextUtils Home - Dark mode";
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode enabled", "warning");
+      document.title = "TextUtils Home - Light mode";
     }
   };
 
